@@ -1,0 +1,171 @@
+[
+    {
+        "_id": "60d5f9f4f4a2b814c89bb7b1",
+        "pet_image": "src/assets/dog for project.jpg",
+        "pet_name": "Buddy",
+        "pet_age": 3,
+        "pet_location": "New York, NY",
+        "category": "Dog"
+    },
+    {
+        "_id": "60d5f9f4f4a2b814c89bb7b2",
+        "pet_image": "https://example.com/images/cat.jpg",
+        "pet_name": "Whiskers",
+        "pet_age": 2,
+        "pet_location": "Los Angeles, CA",
+        "category": "Cat"
+    },
+    {
+        "_id": "60d5f9f4f4a2b814c89bb7b3",
+        "pet_image": "https://example.com/images/rabbit1.jpg",
+        "pet_name": "Thumper",
+        "pet_age": 1,
+        "pet_location": "Chicago, IL",
+        "category": "Rabbit"
+    },
+    {
+        "_id": "60d5f9f4f4a2b814c89bb7b4",
+        "pet_image": "src/assets/dog for project.jpg",
+        "pet_name": "Polly",
+        "pet_age": 4,
+        "pet_location": "Houston, TX",
+        "category": "Bird"
+    },
+    {
+        "_id": "60d5f9f4f4a2b814c89bb7b5",
+        "pet_image": "https://example.com/images/fish1.jpg",
+        "pet_name": "Goldie",
+        "pet_age": 1,
+        "pet_location": "Miami, FL",
+        "category": "Fish"
+    },
+    {
+        "_id": "60d5f9f4f4a2b814c89bb7b9",
+        "pet_image": "https://example.com/images/turtle1.jpg",
+        "pet_name": "Shelly",
+        "pet_age": 6,
+        "pet_location": "Austin, TX",
+        "category": "Turtle"
+    },
+    
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b1",
+            "pet_image": "src/assets/dog for project.jpg",
+            "pet_name": "Buddy",
+            "pet_age": 3,
+            "pet_location": "New York, NY",
+            "category": "Dog"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b2",
+            "pet_image": "https://example.com/images/cat1.jpg",
+            "pet_name": "Whiskers",
+            "pet_age": 2,
+            "pet_location": "Los Angeles, CA",
+            "category": "Cat"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b3",
+            "pet_image": "https://example.com/images/rabbit1.jpg",
+            "pet_name": "Thumper",
+            "pet_age": 1,
+            "pet_location": "Chicago, IL",
+            "category": "Rabbit"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b4",
+            "pet_image": "https://example.com/images/parrot1.jpg",
+            "pet_name": "Polly",
+            "pet_age": 4,
+            "pet_location": "Houston, TX",
+            "category": "Bird"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b5",
+            "pet_image": "https://example.com/images/fish1.jpg",
+            "pet_name": "Goldie",
+            "pet_age": 1,
+            "pet_location": "Miami, FL",
+            "category": "Fish"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b6",
+            "pet_image": "src/assets/dog for project.jpg",
+            "pet_name": "Max",
+            "pet_age": 5,
+            "pet_location": "Seattle, WA",
+            "category": "Dog"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b7",
+            "pet_image": "https://example.com/images/cat2.jpg",
+            "pet_name": "Luna",
+            "pet_age": 3,
+            "pet_location": "Boston, MA",
+            "category": "Cat"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b8",
+            "pet_image": "https://example.com/images/hamster1.jpg",
+            "pet_name": "Hammy",
+            "pet_age": 1,
+            "pet_location": "San Francisco, CA",
+            "category": "Hamster"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7b9",
+            "pet_image": "https://example.com/images/turtle1.jpg",
+            "pet_name": "Shelly",
+            "pet_age": 6,
+            "pet_location": "Austin, TX",
+            "category": "Turtle"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7ba",
+            "pet_image": "https://example.com/images/bird2.jpg",
+            "pet_name": "Tweety",
+            "pet_age": 2,
+            "pet_location": "Denver, CO",
+            "category": "Bird"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7bb",
+            "pet_image": "src/assets/dog for project.jpg",
+            "pet_name": "Rocky",
+            "pet_age": 4,
+            "pet_location": "Phoenix, AZ",
+            "category": "Dog"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7bc",
+            "pet_image": "https://example.com/images/cat3.jpg",
+            "pet_name": "Mittens",
+            "pet_age": 2,
+            "pet_location": "Portland, OR",
+            "category": "Cat"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7bd",
+            "pet_image": "https://example.com/images/fish2.jpg",
+            "pet_name": "Nemo",
+            "pet_age": 1,
+            "pet_location": "Orlando, FL",
+            "category": "Fish"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7be",
+            "pet_image": "https://example.com/images/parrot2.jpg",
+            "pet_name": "Rio",
+            "pet_age": 3,
+            "pet_location": "Atlanta, GA",
+            "category": "Bird"
+        },
+        {
+            "_id": "60d5f9f4f4a2b814c89bb7bf",
+            "pet_image": "https://example.com/images/rabbit2.jpg",
+            "pet_name": "Bugs",
+            "pet_age": 2,
+            "pet_location": "Dallas, TX",
+            "category": "Rabbit"
+        }
+]
