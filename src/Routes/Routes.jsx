@@ -6,6 +6,8 @@ import Root from "../Root/Root";
 import Home from "../Page/Home";
 
 import CategoryPage from "../Page/CategoryPage";
+import Login from "../Page/Login";
+import Signup from "../Page/Signup";
 
 
 
@@ -22,6 +24,14 @@ export const router = createBrowserRouter([
           path: "/category",
           element:<CategoryPage></CategoryPage>
         },
+        {
+          path:'login',
+          element:<Login></Login>
+        },
+        {
+          path:'signup',
+          element:<Signup></Signup>
+        }
       ]
     },
   ]);
