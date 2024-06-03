@@ -10,6 +10,12 @@ import Login from "../Page/Login";
 import Signup from "../Page/Signup";
 import Secret from "../Component/Secret";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Dashboard/Dashboard";
+import AddPet from "../Page/Dashboard/AddPet";
+import Error from "../Page/Error";
+import AllPet from "../Page/AllPet";
+import MyList from "../Page/Dashboard/MyList";
+
 
 
 
@@ -17,10 +23,12 @@ export const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<Error></Error>,
       children: [
         {
             path: "/",
-            element:<Home></Home>
+            element:<Home></Home>,
+           
         },
         {
           path: "/category",
@@ -35,6 +43,11 @@ export const router = createBrowserRouter([
           element:<Signup></Signup>
         },
         {
+          path:'allpets',
+          element:<AllPet></AllPet>,
+          loader:() => fetch('http://localhost:5000/pets')
+        },
+        {
           path:'secret',
           element:<PrivateRoute>
             <Secret></Secret>
@@ -42,4 +55,18 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path: "dashboard",
+      element: <Dashboard></Dashboard>,
+      children:[
+        {
+          path:"/dashboard/pets",
+          element:<AddPet></AddPet>
+        },
+        {
+          path:"/dashboard/myaddpet",
+          element:<MyList></MyList>
+        }
+      ]
+    }
   ]);

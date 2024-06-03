@@ -4,8 +4,11 @@ import Category from "../Component/Category";
 import { Helmet } from "react-helmet-async";
 import CallToActionSection from "../Component/CallToActionSection";
 import AboutUsSection from "../Component/AboutUsSection";
+import { useLoaderData } from "react-router-dom";
+
 
 const Home = () => {
+
   return (
     <div>
       <Helmet>
@@ -14,8 +17,10 @@ const Home = () => {
       <Navbar></Navbar>
       <Banner></Banner>
       <Category></Category>
+      
       <CallToActionSection></CallToActionSection>
       <AboutUsSection></AboutUsSection>
+      
     </div>
   );
 };
