@@ -1,13 +1,14 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const captchaRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [disabled, setDisabled] = useState(true);
 
-  const {signIn}=useContext(AuthContext)
+  const { signIn } = useContext(AuthContext);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -20,14 +21,17 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     signIn(email, password)
-    .then(result=>{
-        const user=result.user;
+      .then(result => {
+        const user = result.user;
         console.log(user);
-    })
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+      })
+      .catch(error => console.error(error));
   };
 
-  const handleValidateCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value)) {
       setDisabled(false);
     } else {
@@ -65,7 +69,7 @@ const Login = () => {
           <div className="items-start">
             <LoadCanvasTemplate />
             <input
-              ref={captchaRef}
+              onBlur={handleValidateCaptcha}
               type="text"
               name="captcha"
               placeholder="type your captcha"
@@ -73,7 +77,7 @@ const Login = () => {
               required
             />
             <div>
-              <button onClick={handleValidateCaptcha} type="button" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+              <button type="button" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 Validate
               </button>
             </div>
@@ -88,7 +92,7 @@ const Login = () => {
         />
         <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
           Not registered? 
-          <Link to='/signup'>create an Account</Link>
+          <Link to='/signup'> Create an Account</Link>
         </div>
       </form>
     </div>
