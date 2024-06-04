@@ -15,58 +15,67 @@ import AddPet from "../Page/Dashboard/AddPet";
 import Error from "../Page/Error";
 import AllPet from "../Page/AllPet";
 import MyList from "../Page/Dashboard/MyList";
-
-
+import CreateDonation from "../Page/Dashboard/CreateDonation";
+import DonationsTable from "../Page/Dashboard/DonationsTable";
 
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Root></Root>,
-      errorElement:<Error></Error>,
-      children: [
-        {
-            path: "/",
-            element:<Home></Home>,
-           
-        },
-        {
-          path: "/category",
-          element:<CategoryPage></CategoryPage>
-        },
-        {
-          path:'login',
-          element:<Login></Login>
-        },
-        {
-          path:'signup',
-          element:<Signup></Signup>
-        },
-        {
-          path:'allpets',
-          element:<AllPet></AllPet>,
-          loader:() => fetch('http://localhost:5000/pets')
-        },
-        {
-          path:'secret',
-          element:<PrivateRoute>
+  {
+    path: "/",
+    element: <Root></Root>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/category",
+        element: <CategoryPage></CategoryPage>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "signup",
+        element: <Signup></Signup>,
+      },
+      {
+        path: "allpets",
+        element: <AllPet></AllPet>,
+        loader: () => fetch('http://localhost:5000/pets'),
+      },
+      {
+        path: "secret",
+        element: (
+          <PrivateRoute>
             <Secret></Secret>
           </PrivateRoute>
-        }
-      ]
-    },
-    {
-      path: "dashboard",
-      element: <Dashboard></Dashboard>,
-      children:[
-        {
-          path:"/dashboard/pets",
-          element:<AddPet></AddPet>
-        },
-        {
-          path:"/dashboard/myaddpet",
-          element:<MyList></MyList>
-        }
-      ]
-    }
-  ]);
+        ),
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "/dashboard/pets",
+        element: <AddPet></AddPet>,
+      },
+      {
+        path: "/dashboard/myaddpet",
+        element: <MyList></MyList>,
+      },
+      {
+        path: "/dashboard/createCampaigns",
+        element: <CreateDonation></CreateDonation>, 
+      },
+      {
+        path: "/dashboard/mycampaigns",
+        element: <DonationsTable></DonationsTable>
+      },
+    ],
+  },
+]);

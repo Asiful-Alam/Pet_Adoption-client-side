@@ -2,9 +2,13 @@ import { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
+import useAxiosPublic from '../Hook/useAxiosPublic';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const axiosPublic =useAxiosPublic();
+  
+  
   const location = useLocation();
   const [disabled, setDisabled] = useState(true);
 
@@ -13,6 +17,8 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+
+  
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -40,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div className="item-center w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
       <form onSubmit={handleLogin} className="space-y-6" action="#">
         <h5 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
         <div>
@@ -95,6 +101,9 @@ const Login = () => {
           <Link to='/signup'> Create an Account</Link>
         </div>
       </form>
+      <div>
+      <SocialLogin></SocialLogin>
+      </div>
     </div>
   );
 };
