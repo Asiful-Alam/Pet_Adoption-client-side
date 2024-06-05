@@ -1,23 +1,48 @@
-import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hook/useAdmin";
 
 const Dashboard = () => {
+  // todo: get isadmin value from database
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex h-screen">
       <div className="w-64 min-h-full bg-gray-800 text-white">
         <div className="p-4">
           <h2 className="text-xl font-semibold mb-4">Dashboard</h2>
           <ul className="menu">
-            <li className="mb-2">
+            {
+              isAdmin ? <>
+               <li>
               <NavLink
-                to="/"
+                to="/dashboard/allusers"
                 className="block py-2 px-4 rounded hover:bg-gray-700"
                 activeClassName="bg-gray-700"
               >
-               Home
+                All User
               </NavLink>
             </li>
-            <li className="mb-2">
+               <li>
+              <NavLink
+                to="/dashboard/allpets"
+                className="block py-2 px-4 rounded hover:bg-gray-700"
+                activeClassName="bg-gray-700"
+              >
+                All Pet
+              </NavLink>
+            </li>
+               <li>
+              <NavLink
+                to="/dashboard/alldonation"
+                className="block py-2 px-4 rounded hover:bg-gray-700"
+                activeClassName="bg-gray-700"
+              >
+                All Donation
+              </NavLink>
+            </li>
+              </>
+              :
+              <>
+              <li className="mb-2">
               <NavLink
                 to="/dashboard/pets"
                 className="block py-2 px-4 rounded hover:bg-gray-700"
@@ -59,7 +84,7 @@ const Dashboard = () => {
                 className="block py-2 px-4 rounded hover:bg-gray-700"
                 activeClassName="bg-gray-700"
               >
-            My Donation Campaigns
+                My Donation Campaigns
               </NavLink>
             </li>
             <li>
@@ -68,7 +93,19 @@ const Dashboard = () => {
                 className="block py-2 px-4 rounded hover:bg-gray-700"
                 activeClassName="bg-gray-700"
               >
-             My Donation
+                My Donation
+              </NavLink>
+            </li>
+              </>
+            }
+            <hr />
+            <li className="mb-2">
+              <NavLink
+                to="/"
+                className="block py-2 px-4 rounded hover:bg-gray-700"
+                activeClassName="bg-gray-700"
+              >
+                Home
               </NavLink>
             </li>
           </ul>

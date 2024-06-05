@@ -3,13 +3,11 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { AuthContext } from '../provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import useAxiosPublic from '../Hook/useAxiosPublic';
 
 const Login = () => {
-  const axiosPublic =useAxiosPublic();
-  
-  
   const location = useLocation();
+  const navigate = useNavigate(); // Add useNavigate hook
+
   const [disabled, setDisabled] = useState(true);
 
   const { signIn } = useContext(AuthContext);
@@ -17,8 +15,6 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
-
-  
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -83,7 +79,7 @@ const Login = () => {
               required
             />
             <div>
-              <button type="button" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+              <button type="submit" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 Validate
               </button>
             </div>
@@ -102,7 +98,7 @@ const Login = () => {
         </div>
       </form>
       <div>
-      <SocialLogin></SocialLogin>
+        <SocialLogin />
       </div>
     </div>
   );
