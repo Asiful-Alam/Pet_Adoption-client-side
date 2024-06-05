@@ -18,6 +18,7 @@ import MyList from "../Page/Dashboard/MyList";
 import CreateDonation from "../Page/Dashboard/CreateDonation";
 import DonationsTable from "../Page/Dashboard/DonationsTable";
 import AllUsers from "../Page/Dashboard/AllUsers";
+import AllPetAdmin from "../Page/Dashboard/admin/AllPetAdmin";
 
 
 export const router = createBrowserRouter([
@@ -82,6 +83,11 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/allusers",
         element:<AllUsers></AllUsers>
+      },
+      {
+        path: "/dashboard/allpets",
+        element:<AllPetAdmin></AllPetAdmin>,
+        loader: () => fetch('http://localhost:5000/pets'),
       },
     ],
   },
