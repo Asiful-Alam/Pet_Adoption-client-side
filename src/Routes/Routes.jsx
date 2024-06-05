@@ -19,6 +19,9 @@ import CreateDonation from "../Page/Dashboard/CreateDonation";
 import DonationsTable from "../Page/Dashboard/DonationsTable";
 import AllUsers from "../Page/Dashboard/AllUsers";
 import AllPetAdmin from "../Page/Dashboard/admin/AllPetAdmin";
+import AllCampaigns from "../Page/AllCampaigns";
+import DonationDetails from "../Page/DonationDetails";
+
 
 
 export const router = createBrowserRouter([
@@ -55,6 +58,14 @@ export const router = createBrowserRouter([
             <Secret></Secret>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "campaigns",  // Add the new route
+        element: <AllCampaigns></AllCampaigns>
+      },
+      {
+        path: "viewcampaigns/:id",
+        element: <DonationDetails></DonationDetails>,
       },
     ],
   },
