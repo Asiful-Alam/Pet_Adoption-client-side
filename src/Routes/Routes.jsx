@@ -1,10 +1,8 @@
-
 import {
-    createBrowserRouter,
-  } from "react-router-dom";
+  createBrowserRouter,
+} from "react-router-dom";
 import Root from "../Root/Root";
 import Home from "../Page/Home";
-
 import CategoryPage from "../Page/CategoryPage";
 import Login from "../Page/Login";
 import Signup from "../Page/Signup";
@@ -16,90 +14,97 @@ import Error from "../Page/Error";
 import AllPet from "../Page/AllPet";
 import MyList from "../Page/Dashboard/MyList";
 import CreateDonation from "../Page/Dashboard/CreateDonation";
-import DonationsTable from "../Page/Dashboard/DonationsTable";
+
 import AllUsers from "../Page/Dashboard/AllUsers";
 import AllPetAdmin from "../Page/Dashboard/admin/AllPetAdmin";
 import AllCampaigns from "../Page/AllCampaigns";
 import DonationDetails from "../Page/DonationDetails";
-
+import MyCampaigns from "../Page/Dashboard/MyCampaigns";
+import AllDonation from "../Page/Dashboard/admin/AllDonation";
 
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Root></Root>,
-    errorElement: <Error></Error>,
-    children: [
-      {
-        path: "/",
-        element: <Home></Home>,
-      },
-      {
-        path: "/category",
-        element: <CategoryPage></CategoryPage>,
-      },
-      {
-        path: "login",
-        element: <Login></Login>,
-      },
-      {
-        path: "signup",
-        element: <Signup></Signup>,
-      },
-      {
-        path: "allpets",
-        element: <AllPet></AllPet>,
-        loader: () => fetch('http://localhost:5000/pets'),
-      },
-      {
-        path: "secret",
-        element: (
-          <PrivateRoute>
-            <Secret></Secret>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "campaigns",  // Add the new route
-        element: <AllCampaigns></AllCampaigns>
-      },
-      {
-        path: "viewcampaigns/:id",
-        element: <DonationDetails></DonationDetails>,
-      },
-    ],
+      path: "/",
+      element: <Root></Root>,
+      errorElement: <Error></Error>,
+      children: [
+          {
+              path: "/",
+              element: <Home></Home>,
+          },
+          {
+              path: "/category",
+              element: <CategoryPage></CategoryPage>,
+          },
+          {
+              path: "/login", // Fixed the missing slash
+              element: <Login></Login>,
+          },
+          {
+              path: "/signup", // Fixed the missing slash
+              element: <Signup></Signup>,
+          },
+          {
+              path: "/allpets", // Fixed the missing slash
+              element: <AllPet></AllPet>,
+              loader: () => fetch('http://localhost:5000/pets'),
+          },
+          {
+              path: "/secret", // Fixed the missing slash
+              element: (
+                  <PrivateRoute>
+                      <Secret></Secret>
+                  </PrivateRoute>
+              ),
+          },
+          {
+              path: "/campaigns", // Fixed the missing slash
+              element: <AllCampaigns></AllCampaigns>
+          },
+          {
+              path: "/viewcampaigns/:id", // Fixed the missing slash
+              element: <DonationDetails></DonationDetails>,
+          },
+          {
+              path: "/mycampaigns/:email", // Fixed the missing slash and added the parameter
+              element: <MyCampaigns></MyCampaigns>,
+          },
+      ],
   },
   {
-    path: "dashboard",
-    element: <Dashboard></Dashboard>,
-    children: [
-      {
-        path: "/dashboard/pets",
-        element: <AddPet></AddPet>,
-      },
-      {
-        path: "/dashboard/myaddpet",
-        element: <MyList></MyList>,
-      },
-      {
-        path: "/dashboard/createCampaigns",
-        element: <CreateDonation></CreateDonation>, 
-      },
-      {
-        path: "/dashboard/mycampaigns",
-        element: <DonationsTable></DonationsTable>
-      },
-
-      // admin routes
-      {
-        path: "/dashboard/allusers",
-        element:<AllUsers></AllUsers>
-      },
-      {
-        path: "/dashboard/allpets",
-        element:<AllPetAdmin></AllPetAdmin>,
-        loader: () => fetch('http://localhost:5000/pets'),
-      },
-    ],
+      path: "/dashboard", // Fixed the missing slash
+      element: <Dashboard></Dashboard>,
+      children: [
+          {
+              path: "/dashboard/pets", // Fixed the missing slash
+              element: <AddPet></AddPet>,
+          },
+          {
+              path: "/dashboard/myaddpet", // Fixed the missing slash
+              element: <MyList></MyList>,
+          },
+          {
+              path: "/dashboard/createCampaigns", // Fixed the missing slash
+              element: <CreateDonation></CreateDonation>, 
+          },
+          {
+              path: "/dashboard/mycampaigns", // Fixed the missing slash
+              element: <MyCampaigns></MyCampaigns>
+          },
+          {
+              path: "/dashboard/allusers", // Fixed the missing slash
+              element:<AllUsers></AllUsers>
+          },
+          {
+              path: "/dashboard/allpets", // Fixed the missing slash
+              element:<AllPetAdmin></AllPetAdmin>,
+              loader: () => fetch('http://localhost:5000/pets'),
+          },
+          {
+              path: "/dashboard/alldonation", // Fixed the missing slash
+              element:<AllDonation></AllDonation>
+          },
+      ],
   },
 ]);

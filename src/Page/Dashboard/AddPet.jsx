@@ -49,21 +49,19 @@ const AddPet = () => {
         email: user.email,
         displayName: user.displayName
       };
-      console.log("Sending new pet data:", newPet);
-  
+
       try {
         const response = await fetch("http://localhost:5000/pets", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newPet),
         });
-  
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-  
+
         const data = await response.json();
-        console.log("Server response:", data);
         toast("Pet created successfully!");
       } catch (error) {
         console.error("Error adding pet:", error);
@@ -75,10 +73,10 @@ const AddPet = () => {
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     setImage(file);
-  
+
     const formData = new FormData();
     formData.append("image", file);
-  
+
     try {
       const response = await fetch("https://api.imgbb.com/1/upload?key=6b00410e7298a08634c9d8f7abd48fe9", {
         method: "POST",

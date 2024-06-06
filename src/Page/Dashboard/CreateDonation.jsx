@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from "../../provider/AuthProvider";
 
 const CreateDonation = () => {
+  const { user } = useContext(AuthContext);
   const [petPicture, setPetPicture] = useState(null);
   const [maxDonation, setMaxDonation] = useState("");
   const [lastDate, setLastDate] = useState("");
@@ -10,13 +14,30 @@ const CreateDonation = () => {
   const [longDescription, setLongDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+  // If user is null, show a loading skeleton
+  if (!user) {
+    return (
+      <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
+        <h1 className="text-2xl font-bold mb-6"><Skeleton width={200} /></h1>
+        <form>
+          <div className="mb-4"><Skeleton height={40} /></div>
+          <div className="mb-4"><Skeleton height={40} /></div>
+          <div className="mb-4"><Skeleton height={40} /></div>
+          <div className="mb-4"><Skeleton height={40} /></div>
+          <div className="mb-4"><Skeleton height={40} /></div>
+          <div className="mb-4"><Skeleton height={50} /></div>
+        </form>
+      </div>
+    );
+  }
+
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     setPetPicture(file);
-  
+
     const formData = new FormData();
     formData.append("image", file);
-  
+
     try {
       const response = await fetch("https://api.imgbb.com/1/upload?key=6b00410e7298a08634c9d8f7abd48fe9", {
         method: "POST",
@@ -40,6 +61,7 @@ const CreateDonation = () => {
       lastDate,
       shortDescription,
       longDescription,
+      email: user.email,
       createdAt: new Date().toISOString(),
     };
 
@@ -70,10 +92,7 @@ const CreateDonation = () => {
       <h1 className="text-2xl font-bold mb-6">Create Donation Campaign</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="petPicture"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="petPicture">
             Pet Picture
           </label>
           <input
@@ -87,10 +106,7 @@ const CreateDonation = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="maxDonation"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="maxDonation">
             Maximum Donation Amount
           </label>
           <input
@@ -104,10 +120,7 @@ const CreateDonation = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="lastDate"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastDate">
             Last Date of Donation
           </label>
           <input
@@ -121,10 +134,7 @@ const CreateDonation = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="shortDescription"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="shortDescription">
             Short Description
           </label>
           <input
@@ -138,10 +148,7 @@ const CreateDonation = () => {
           />
         </div>
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="longDescription"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="longDescription">
             Long Description
           </label>
           <textarea
@@ -154,10 +161,7 @@ const CreateDonation = () => {
           ></textarea>
         </div>
         <div className="mb-4">
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-          >
+          <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
             Submit
           </button>
         </div>
