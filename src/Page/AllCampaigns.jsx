@@ -13,7 +13,7 @@ const AllCampaigns = () => {
     if (loading || !hasMore) return;
     setLoading(true);
     try {
-      const response = await axiosSecure.get(`/donations?page=${page}&limit=10`);
+      const response = await axiosSecure.get(`/donation?page=${page}&limit=10`);
       if (response.data.length > 0) {
         setCampaigns((prev) => [...prev, ...response.data]);
         setPage((prev) => prev + 1);
@@ -48,7 +48,7 @@ const AllCampaigns = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 mt-10">
-      <h1 className="text-3xl font-bold mb-6">All Campaigns</h1>
+      <h1 className="text-3xl font-bold mb-6">All Campaigns ({campaigns.length})</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {campaigns.map((campaign) => (
           <div key={campaign._id} className="bg-white p-6 rounded-lg shadow-lg">

@@ -1,9 +1,7 @@
-// Frontend code for handling donation deletion
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { FaEdit, FaPause, FaTrash } from 'react-icons/fa';
-import useAxiosSecure from '../../../Hook/useAxiosSecure';
 
 const AllDonation = () => {
   const [donations, setDonations] = useState([]);
@@ -15,7 +13,7 @@ const AllDonation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/donations?page=${page}`);
+        const response = await axios.get(`http://localhost:5000/donation?page=${page}`);
         const newData = response.data;
         if (newData.length === 0) {
           setHasMore(false);
@@ -57,12 +55,10 @@ const AllDonation = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        useAxiosSecure.delete(`http://localhost:5000/donation/${donation._id}`)
+        axios.delete(`http://localhost:5000/donation/${donation._id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
-              // Assuming refetch is a function that reloads the donation data
-              // You need to define refetch function or any other method to update donations after deletion
-              // refetch();
+              setDonations((prevDonations) => prevDonations.filter(d => d._id !== donation._id));
               Swal.fire({
                 title: "Deleted!",
                 text: "The donation has been deleted.",
@@ -81,9 +77,6 @@ const AllDonation = () => {
       }
     });
   };
-  
-
-  // Other functions like handleEdit and handlePause remain unchanged
 
   return (
     <div className="overflow-auto max-h-screen">
@@ -113,7 +106,7 @@ const AllDonation = () => {
                 <td className="border px-4 py-2">
                   <button className="mr-2"><FaEdit /></button>
                   <button onClick={() => handleDeleteDonation(donation)} className="mr-2"><FaTrash /></button>
-                  <button ><FaPause /></button>
+                  <button><FaPause /></button>
                 </td>
               </tr>
             ))}

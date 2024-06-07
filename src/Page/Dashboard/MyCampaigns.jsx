@@ -7,6 +7,7 @@ import MyCampaignCard from "../Dashboard/MyCampaignCard";
 const MyCampaigns = () => {
   const { user } = useContext(AuthContext);
   const [campaigns, setCampaigns] = useState([]);
+  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
