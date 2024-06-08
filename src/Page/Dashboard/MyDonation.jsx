@@ -1,43 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import useAxiosSecure from '../../Hook/useAxiosSecure';
+import React, { useEffect, useState } from "react";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import useAuth from "../../Hook/useAuth";
 
+const MyDonations = () => {
+  const { currentUser } = useAuth();
+  const [donations, setDonations] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
-const MyDonation = () => {
-    const axiosSecure = useAxiosSecure();
-    const [donations, setDonations] = useState([]);
+  useEffect(() => {
+    if (currentUser?.email) {
+      console.log("Fetching donations for:", currentUser.email);
+      axiosSecure
+        .get(`/donation/${currentUser.email}`)
+        .then((response) => {
+          console.log("Donations data:", response.data);
+          setDonations(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching donations:", error);
+        });
+    }
+  }, [currentUser, axiosSecure]);
 
-    useEffect(() => {
-        const fetchUserDonations = async () => {
-            try {
-                // Fetch user donations using axiosSecure
-                const response = await axiosSecure.get(`/mycampaigns/${user.email}`); // Replace `user.email` with the actual user's email
-                setDonations(response.data);
-            } catch (error) {
-                console.error('Error fetching user donations:', error);
-            }
-        };
+  const handleRefund = (donationId) => {
+    axiosSecure
+      .post(`/refund/${donationId}`)
+      .then((response) => {
+        if (response.data.success) {
+          setDonations(
+            donations.filter((donation) => donation._id !== donationId)
+          );
+        }
+      })
+      .catch((error) => console.error("Error processing refund:", error));
+  };
 
-        fetchUserDonations();
-    }, [axiosSecure]);
-
-    return (
-        <div className="max-w-7xl mx-auto p-6 mt-10">
-            <h1 className="text-3xl font-bold mb-6">My Donations ({donations.length})</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {donations.map((donation) => (
-                    <div key={donation._id} className="bg-white p-6 rounded-lg shadow-lg">
-                        <h2 className="text-xl font-semibold mb-2">{donation.petName}</h2>
-                        <p className="text-gray-700 mb-2">
-                            <strong>Donated Amount:</strong> ${donation.donatedAmount || 0}
-                        </p>
-                        <p className="text-gray-700 mb-4">
-                            <strong>Date:</strong> {new Date(donation.createdAt).toLocaleDateString()}
-                        </p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">My Donations</h2>
+      {donations.length === 0 ? (
+        <div className="text-center text-gray-500">No donations found</div>
+      ) : (
+        <table className="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th className="py-2">Pet Image</th>
+              <th className="py-2">Pet Name</th>
+              <th className="py-2">Donated Amount</th>
+              <th className="py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {donations.map((donation) => (
+              <tr key={donation._id}>
+                <td className="py-2">
+                  <img
+                    src={donation.petPicture}
+                    alt={donation.petName}
+                    className="w-20 h-20 object-cover"
+                  />
+                </td>
+                <td className="py-2">{donation.petName}</td>
+                <td className="py-2">${donation.donatedAmount.toFixed(2)}</td>
+                <td className="py-2">
+                  <button
+                    className="bg-red-500 text-white px-4 py-2 rounded"
+                    onClick={() => handleRefund(donation._id)}
+                  >
+                    Ask for Refund
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
 };
 
-export default MyDonation;
+export default MyDonations;

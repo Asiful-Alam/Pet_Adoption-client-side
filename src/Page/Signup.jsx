@@ -27,6 +27,7 @@ const SignupForm = () => {
           const userInfo = {
             name: data.name,
             email: data.email,
+            
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {

@@ -92,7 +92,8 @@ const AddPet = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
+
+      <div className=" max-w-md mx-auto mt-8">
       <div className="bg-white shadow-md rounded px-8 py-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">Add Pet</h2>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
@@ -192,7 +193,7 @@ const AddPet = () => {
           </div>
           <div>
             <button
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+              className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 focus:outline-none"
               type="submit"
             >
               Add Pet
@@ -202,7 +203,9 @@ const AddPet = () => {
         <ToastContainer />
       </div>
     </div>
+  
   );
 };
 
 export default AddPet;
+

@@ -79,42 +79,44 @@ const AllDonation = () => {
   };
 
   return (
-    <div className="overflow-auto max-h-screen">
-      <h2 className="text-xl font-bold mb-4">All Donations: {donations.length}</h2>
-      <div ref={tableRef} className="w-full overflow-x-auto">
-        <table className="w-full table-auto border-collapse">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">No</th>
-              <th className="px-4 py-2">Picture</th>
-              <th className="px-4 py-2">Max Donation</th>
-              <th className="px-4 py-2">Last Date</th>
-              <th className="px-4 py-2">Email</th>
-              <th className="px-4 py-2">Created At</th>
-              <th className="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations.map((donation, index) => (
-              <tr key={donation._id}>
-                <td className="border px-4 py-2">{index + 1}</td>
-                <td className="border px-4 py-2"><img src={donation.petPicture} alt="Pet" className="w-20 h-20 object-cover" /></td>
-                <td className="border px-4 py-2">{donation.maxDonation}</td>
-                <td className="border px-4 py-2">{donation.lastDate}</td>
-                <td className="border px-4 py-2">{donation.email}</td>
-                <td className="border px-4 py-2">{new Date(donation.createdAt).toLocaleString()}</td>
-                <td className="border px-4 py-2">
-                  <button className="mr-2"><FaEdit /></button>
-                  <button onClick={() => handleDeleteDonation(donation)} className="mr-2"><FaTrash /></button>
-                  <button><FaPause /></button>
-                </td>
+    <div className="overflow-x-auto">
+      <div className="max-h-screen px-4">
+        <h2 className="text-2xl font-bold mb-4 text-teal-800">All Donations: {donations.length}</h2>
+        <div ref={tableRef} className="w-full overflow-x-auto">
+          <table className="w-full table-auto border-collapse">
+            <thead>
+              <tr>
+                <th className="px-2 py-2 sm:px-4">No</th>
+                <th className="px-2 py-2 sm:px-4">Picture</th>
+                <th className="px-2 py-2 sm:px-4">Max Donation</th>
+                <th className="px-2 py-2 sm:px-4">Last Date</th>
+                <th className="px-2 py-2 sm:px-4">Email</th>
+                <th className="px-2 py-2 sm:px-4">Created At</th>
+                <th className="px-2 py-2 sm:px-4">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {donations.map((donation, index) => (
+                <tr key={donation._id}>
+                  <td className="border px-2 py-2 sm:px-4">{index + 1}</td>
+                  <td className="border px-2 py-2 sm:px-4"><img src={donation.petPicture} alt="Pet" className="w-16 h-16 sm:w-20 sm:h-20 object-cover" /></td>
+                  <td className="border px-2 py-2 sm:px-4">{donation.maxDonation}</td>
+                  <td className="border px-2 py-2 sm:px-4">{donation.lastDate}</td>
+                  <td className="border px-2 py-2 sm:px-4">{donation.email}</td>
+                  <td className="border px-2 py-2 sm:px-4">{new Date(donation.createdAt).toLocaleString()}</td>
+                  <td className="border px-2 py-2 sm:px-4">
+                    <button className="mr-2 text-teal-600 hover:text-teal-800"><FaEdit /></button>
+                    <button onClick={() => handleDeleteDonation(donation)} className="mr-2 text-teal-600 hover:text-teal-800"><FaTrash /></button>
+                    <button className="text-teal-600 hover:text-teal-800"><FaPause /></button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {loading && <div>Loading more...</div>}
+        {!hasMore && <div>No more data</div>}
       </div>
-      {loading && <div>Loading more...</div>}
-      {!hasMore && <div>No more data</div>}
     </div>
   );
 };

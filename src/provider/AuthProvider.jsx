@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -15,6 +15,10 @@ import useAxiosPublic from "../Hook/useAxiosPublic";
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

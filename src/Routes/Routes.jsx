@@ -21,6 +21,7 @@ import MyCampaigns from "../Page/Dashboard/MyCampaigns";
 import AllDonation from "../Page/Dashboard/admin/AllDonation";
 import Payment from "../Component/Payment";
 import MyDonation from "../Page/Dashboard/MyDonation";
+import AllPetDetails from "../Page/AllPetDetails";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ export const router = createBrowserRouter([
         element: <AllPet></AllPet>,
         loader: () => fetch("http://localhost:5000/pets"),
       },
+      {
+        path: "/allpetdetails/:id", // Correct parameter name
+        element: <AllPetDetails />,
+        loader: () => fetch("http://localhost:5000/pets"),
+    },
       {
         path: "/secret", // Fixed the missing slash
         element: (

@@ -1,23 +1,34 @@
-
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import PetCard from '../Component/PetCard';
 import Navbar from '../Component/Navbar';
 
 const AllPet = () => {
-    const pets=useLoaderData();
+    const pets = useLoaderData();
+    const [searchTerm, setSearchTerm] = useState('');
+    const unadoptedPets = pets.filter(pet => !pet.adopted && pet.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
-       <div>
-        <div><Navbar></Navbar></div>
-        <div>
-            <div>
-        <h1>All Pets {pets.length}</h1>
-      </div>
-      {
-        pets.map(pets => <PetCard key={pets._id}
-        pets={pets}></PetCard>)
-      }
+        <div className="p-4 overflow-x-auto max-w-full">
+            <Navbar />
+            <div className="max-w-screen-md mx-auto">
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold mb-4">All Pets ({unadoptedPets.length})</h1>
+                    <input
+                        type="text"
+                        className="w-full border border-gray-300 rounded-md py-2 px-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Search by pet name"
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                    />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {unadoptedPets.map(pet => (
+                        <PetCard key={pet._id} pet={pet} />
+                    ))}
+                </div>
+            </div>
         </div>
-       </div>
     );
 };
 

@@ -1,9 +1,10 @@
-// CheckoutForm.js
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import { useAuth } from "../provider/AuthProvider"; // Correct import path
 
-const CheckoutForm = ({ donationAmount, campaignId, userEmail, onPaymentSuccess }) => {
+const CheckoutForm = ({ donationAmount, campaignId, onPaymentSuccess }) => {
+  const { user } = useAuth(); // Assumes you have an Auth context to get the current user
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
@@ -31,7 +32,6 @@ const CheckoutForm = ({ donationAmount, campaignId, userEmail, onPaymentSuccess 
       return;
     }
 
-    // Create payment method
     const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card,
@@ -43,7 +43,6 @@ const CheckoutForm = ({ donationAmount, campaignId, userEmail, onPaymentSuccess 
       return;
     }
 
-    // Confirm card payment
     const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: paymentMethod.id,
     });
@@ -54,8 +53,7 @@ const CheckoutForm = ({ donationAmount, campaignId, userEmail, onPaymentSuccess 
       return;
     }
 
-    // Update the backend with the new donated amount and user email
-    axiosSecure.post(`/update-donation/${campaignId}`, { amount: totalPrice, email: userEmail })
+    axiosSecure.post(`/update-donation/${campaignId}`, { amount: totalPrice, email: user.email })
       .then(response => {
         onPaymentSuccess(response.data.updatedAmount);
       })

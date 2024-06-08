@@ -7,16 +7,17 @@ import MyCampaignCard from "../Dashboard/MyCampaignCard";
 const MyCampaigns = () => {
   const { user } = useContext(AuthContext);
   const [campaigns, setCampaigns] = useState([]);
-  
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (user) {
       const fetchMyCampaigns = async () => {
         try {
+          console.log("Fetching campaigns for user:", user.email);
           const response = await fetch(`http://localhost:5000/mycampaigns/${user.email}`);
           if (response.ok) {
             const data = await response.json();
+            console.log("Fetched campaigns:", data);
             setCampaigns(data);
           } else {
             console.error('Failed to fetch campaigns');

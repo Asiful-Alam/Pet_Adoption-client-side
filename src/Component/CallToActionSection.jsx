@@ -2,10 +2,10 @@ import React from "react";
 
 const CallToActionSection = () => {
   return (
-    <section className="bg-blue-100 py-16">
+    <section className="bg-teal-500 py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-blue-800 mb-8">Change a Life, Adopt a Pet</h2>
-        <p className="text-lg text-center text-gray-800 mb-12">
+        <h2 className="text-4xl font-bold text-center text-white mb-8">Change a Life, Adopt a Pet</h2>
+        <p className="text-lg text-center text-white mb-12">
           Transform a pet's life and enrich your own. Join us in our mission to provide loving homes for pets in need.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
