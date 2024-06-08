@@ -1,4 +1,7 @@
 import React, { useContext, useState } from "react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { toast } from 'react-toastify';
@@ -148,18 +151,18 @@ const CreateDonation = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="longDescription">
-            Long Description
-          </label>
-          <textarea
-            id="longDescription"
-            name="longDescription"
-            value={longDescription}
-            onChange={(e) => setLongDescription(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded-lg"
-          ></textarea>
-        </div>
+  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="longDescription">
+    Long Description
+  </label>
+  <ReactQuill
+    id="longDescription"
+    value={longDescription}
+    onChange={setLongDescription}
+    required
+    className="w-full border rounded-lg"
+  />
+</div>
+
         <div className="mb-4">
           <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
             Submit

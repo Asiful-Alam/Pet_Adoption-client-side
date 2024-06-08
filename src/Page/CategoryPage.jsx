@@ -1,9 +1,19 @@
+// CategoryPage.js
+
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Navbar from "../Component/Navbar";
 
 const CategoryPage = () => {
   const [data, setData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  // Use the useLocation hook to get the current location
+  const location = useLocation();
+  // Parse the query parameter to get the selected category
+  const params = new URLSearchParams(location.search);
+  const selectedCategoryFromQuery = params.get('category');
 
   useEffect(() => {
     fetch("category.json") // Assuming data comes from a JSON file
@@ -16,16 +26,20 @@ const CategoryPage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    setSelectedCategory(selectedCategoryFromQuery); // Set the selected category from query parameter
+  }, [selectedCategoryFromQuery]);
+
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar />
       <Helmet>
         <title>Pet Category</title>
       </Helmet>
       <h1>Pet Category Page</h1>
       {/* Remove the filter selection as it's not needed for displaying all data */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {data.map((item) => (
+        {data.filter(item => !selectedCategory || item.category === selectedCategory).map((item) => (
           <div key={item._id}>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">

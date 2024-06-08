@@ -22,6 +22,8 @@ import AllDonation from "../Page/Dashboard/admin/AllDonation";
 import Payment from "../Component/Payment";
 import MyDonation from "../Page/Dashboard/MyDonation";
 import AllPetDetails from "../Page/AllPetDetails";
+import AdoptionRequest from "../Page/Dashboard/AdoptionRequest";
+
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +81,10 @@ export const router = createBrowserRouter([
         path: "/payment", // Fixed the missing slash and added the parameter
         element: <Payment></Payment>,
       },
+      // {
+      //   path: "/map", // Fixed the missing slash and added the parameter
+      //   element: <MapView></MapView>,
+      // },
     ],
   },
   {
@@ -96,6 +102,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/createCampaigns", // Fixed the missing slash
         element: <CreateDonation></CreateDonation>,
+      },
+      {
+        path: "/dashboard/adoptionreq", // Fixed the missing slash
+        element: <AdoptionRequest></AdoptionRequest>
       },
       {
         path: "/dashboard/mycampaigns", // Fixed the missing slash

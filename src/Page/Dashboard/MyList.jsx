@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { AuthContext } from '../../provider/AuthProvider';
-import MyListCard from './MyListCard';
+import MyListCard from '../Dashboard/MyListCard';
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
@@ -14,6 +13,7 @@ const MyList = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch(`http://localhost:5000/pets/${user?.email}`, { credentials: 'include' });
+
         if (response.ok) {
           const data = await response.json();
           setPets(data);

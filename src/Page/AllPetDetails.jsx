@@ -1,45 +1,101 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import AdoptionModal from "../Component/AdoptionModal"; // Import the modal component
+import { useAuth } from "../provider/AuthProvider";
+
 
 const AllPetDetails = () => {
-    const { id } = useParams();
-    const [petDetails, setPetDetails] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const [petDetails, setPetDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    useEffect(() => {
-        setLoading(true);
-        fetch(`http://localhost:5000/pets/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                setPetDetails(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Error fetching pet details:', error);
-                setLoading(false);
-            });
-    }, [id]);
+  const { user } = useAuth(); // Get the current user
 
-    return (
-        <div className="p-4 max-w-screen-md mx-auto">
-            {loading ? (
-                <p>Loading...</p>
-            ) : petDetails ? (
-                <>
-                    <h1 className="text-2xl font-bold mb-4">Pet Details</h1>
-                    <img src={petDetails.photo} alt={petDetails.name} className="w-32 h-32 mb-4 rounded-full shadow-lg" />
-                    <p className="text-lg"><strong>Name:</strong> {petDetails.name}</p>
-                    <p className="text-lg"><strong>Age:</strong> {petDetails.age}</p>
-                    <p className="text-lg"><strong>Location:</strong> {petDetails.location}</p>
-                    <button className="mt-4 py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                        Adopt
-                    </button>
-                </>
-            ) : (
-                <p>Pet not found</p>
-            )}
-        </div>
-    );
+  useEffect(() => {
+    setLoading(true);
+    fetch(`http://localhost:5000/pets/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setPetDetails(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching pet details:", error);
+        setLoading(false);
+      });
+  }, [id]);
+
+  const handleAdoptClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleAdoptionSubmit = (adoptionData) => {
+    fetch("http://localhost:5000/adoption", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(adoptionData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Adoption request submitted:", data);
+        setIsModalOpen(false);
+      })
+      .catch((error) => {
+        console.error("Error submitting adoption request:", error);
+      });
+  };
+
+  return (
+    <div className="p-4 max-w-screen-md mx-auto">
+      {loading ? (
+        <p>Loading...</p>
+      ) : petDetails ? (
+        <>
+          <h1 className="text-3xl font-bold mb-6">Pet Details</h1>
+          <div className="flex flex-col items-center space-y-4">
+            <img
+              src={petDetails.photo}
+              alt={petDetails.name}
+              className="w-48 h-48 rounded-full shadow-lg"
+            />
+            <div className="text-lg">
+              <p>
+                <strong>Name:</strong> {petDetails.name}
+              </p>
+              <p>
+                <strong>Age:</strong> {petDetails.age}
+              </p>
+              <p>
+                <strong>Location:</strong> {petDetails.location}
+              </p>
+            </div>
+            <button
+              onClick={handleAdoptClick}
+              className="py-2 px-6 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              Adopt
+            </button>
+          </div>
+          <AdoptionModal
+            pet={petDetails}
+            user={user} // Pass the current user to the modal
+            isOpen={isModalOpen}
+            onClose={handleModalClose}
+            onSubmit={handleAdoptionSubmit}
+          />
+        </>
+      ) : (
+        <p>Pet not found</p>
+      )}
+    </div>
+  );
 };
 
 export default AllPetDetails;

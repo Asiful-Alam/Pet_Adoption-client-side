@@ -59,14 +59,7 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/category"
-                  className="text-gray-200 hover:text-white block px-2 py-1"
-                >
-                  Pet Listing
-                </Link>
-              </li>
+              
               <li>
                 <Link
                   to="/campaigns"
@@ -75,21 +68,12 @@ const Navbar = () => {
                   Donation Campaigns
                 </Link>
               </li>
-              
-              <li>
-                <Link
-                  to="/category"
-                  className="text-gray-200 hover:text-white block px-2 py-1"
-                >
-                  Category
-                </Link>
-              </li>
               <li>
                 <Link
                   to="/allpets"
                   className="text-gray-200 hover:text-white block px-2 py-1"
                 >
-                  All Pets
+                  Pet Listing
                 </Link>
               </li>
               {user ? (
