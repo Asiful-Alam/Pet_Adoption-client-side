@@ -12,7 +12,7 @@ const AdoptionRequest = () => {
     if (user?.email) {
       console.log("Fetching adoption requests for:", user.email);
       axiosSecure
-        .get(`/adoption/${user.email}`) // Assuming your backend API endpoint is /adoption/:email
+        .get(`/adoption/${user.email}`)
         .then((response) => {
           console.log("Adoption requests data:", response.data);
           setAdoptionRequests(response.data);

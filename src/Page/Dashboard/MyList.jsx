@@ -12,8 +12,7 @@ const MyList = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/pets/${user?.email}`, { credentials: 'include' });
-
+        const response = await fetch(`http://localhost:5000/mypets/${user?.email}`, { credentials: 'include' });
         if (response.ok) {
           const data = await response.json();
           setPets(data);

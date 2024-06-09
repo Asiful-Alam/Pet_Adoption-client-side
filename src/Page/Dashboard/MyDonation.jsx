@@ -11,14 +11,14 @@ const MyDonations = () => {
     const fetchDonations = async () => {
       try {
         if (user?.email) {
-          const response = await axiosSecure.get(`/donation/${user.email}`);
+          const response = await axiosSecure.get(`/userpayment/${user.email}`);
           setDonations(response.data);
         }
       } catch (error) {
         console.error("Error fetching donations:", error);
       }
     };
-    
+
     fetchDonations();
   }, [user, axiosSecure]);
 
@@ -52,8 +52,8 @@ const MyDonations = () => {
           <tbody>
             {donations.map((donation) => (
               <tr key={donation._id}>
-                <td>{donation.petName}</td>
-                <td>${donation.donatedAmount.toFixed(2)}</td>
+                <td>{donation.createdAt}</td>
+                <td>${donation.amount ? donation.amount.toFixed(2) : 'N/A'}</td>
                 <td>
                   <button onClick={() => handleRefund(donation._id)}>
                     Ask for Refund

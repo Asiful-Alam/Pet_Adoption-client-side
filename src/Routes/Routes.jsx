@@ -23,6 +23,7 @@ import Payment from "../Component/Payment";
 import MyDonation from "../Page/Dashboard/MyDonation";
 import AllPetDetails from "../Page/AllPetDetails";
 import AdoptionRequest from "../Page/Dashboard/AdoptionRequest";
+import UserAdoption from "../Page/Dashboard/UserAdoption";
 
 
 export const router = createBrowserRouter([
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/adoptionreq", // Fixed the missing slash
         element: <AdoptionRequest></AdoptionRequest>
+      },
+      {
+        path: "/dashboard/adoptionbyuser", // Fixed the missing slash
+        element: <UserAdoption></UserAdoption>
       },
       {
         path: "/dashboard/mycampaigns", // Fixed the missing slash

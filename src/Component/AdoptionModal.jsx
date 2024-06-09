@@ -12,7 +12,7 @@ const AdoptionModal = ({ pet, user, isOpen, onClose, onSubmit }) => {
       petId: pet._id,
       petName: pet.name,
       petImage: pet.photo,
-      userName: user.displayName || user.email, // Use displayName or email as fallback
+      userName: user.displayName || user.email,
       userEmail: user.email,
       phone,
       address,
@@ -32,7 +32,7 @@ const AdoptionModal = ({ pet, user, isOpen, onClose, onSubmit }) => {
             </label>
             <input
               type="text"
-              value={user.displayName || user.email} // Display user name or email as fallback
+              value={user.displayName || user.email}
               disabled
               className="w-full border border-gray-300 rounded-md py-2 px-4"
             />

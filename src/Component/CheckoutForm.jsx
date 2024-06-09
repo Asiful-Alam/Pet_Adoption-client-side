@@ -13,14 +13,14 @@ const CheckoutForm = ({ donationAmount, campaignId, onPaymentSuccess }) => {
   const totalPrice = parseFloat(donationAmount);
 
   useEffect(() => {
-    axiosSecure.post('/create-payment-intent', { price: totalPrice })
+    axiosSecure.post('/create-payment-intent', { price: totalPrice, email: user.email })
       .then(res => {
         setClientSecret(res.data.clientSecret);
       })
       .catch(error => {
         console.error('Error fetching client secret:', error);
       });
-  }, [axiosSecure, totalPrice]);
+  }, [axiosSecure, totalPrice, user.email]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
