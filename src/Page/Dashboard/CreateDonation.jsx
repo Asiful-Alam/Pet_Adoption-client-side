@@ -91,11 +91,11 @@ const CreateDonation = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mt-10">
-      <h1 className="text-2xl font-bold mb-6">Create Donation Campaign</h1>
+    <div className="max-w-md mx-auto bg-purple-gradient p-6 rounded-lg shadow-lg mt-10">
+      <h1 className="text-2xl font-bold mb-6 text-white">Create Donation Campaign</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="petPicture">
+          <label className="block text-gray-700 text-sm font-bold mb-2 text-white" htmlFor="petPicture">
             Pet Picture
           </label>
           <input
@@ -105,11 +105,11 @@ const CreateDonation = () => {
             accept="image/*"
             onChange={handleImageUpload}
             required
-            className="w-full px-3 py-2 border rounded-lg"
+            className="w-full px-3 py-2 border rounded-lg text-white"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="maxDonation">
+          <label className="block text-gray-700 text-sm font-bold mb-2 text-white" htmlFor="maxDonation">
             Maximum Donation Amount
           </label>
           <input
@@ -119,11 +119,11 @@ const CreateDonation = () => {
             value={maxDonation}
             onChange={(e) => setMaxDonation(e.target.value)}
             required
-            className="w-full px-3 py-2 border rounded-lg"
+            className="w-full px-3 py-2 border rounded-lg text-white"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastDate">
+          <label className="block text-gray-700 text-sm font-bold mb-2 text-white" htmlFor="lastDate">
             Last Date of Donation
           </label>
           <input
@@ -133,11 +133,11 @@ const CreateDonation = () => {
             value={lastDate}
             onChange={(e) => setLastDate(e.target.value)}
             required
-            className="w-full px-3 py-2 border rounded-lg"
+            className="w-full px-3 py-2 border rounded-lg text-white"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="shortDescription">
+          <label className="block text-gray-700 text-sm font-bold mb-2 text-white" htmlFor="shortDescription">
             Short Description
           </label>
           <input
@@ -147,24 +147,23 @@ const CreateDonation = () => {
             value={shortDescription}
             onChange={(e) => setShortDescription(e.target.value)}
             required
-            className="w-full px-3 py-2 border rounded-lg"
+            className="w-full px-3 py-2 border rounded-lg text-white"
           />
         </div>
         <div className="mb-4">
-  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="longDescription">
-    Long Description
-  </label>
-  <ReactQuill
-    id="longDescription"
-    value={longDescription}
-    onChange={setLongDescription}
-    required
-    className="w-full border rounded-lg"
-  />
-</div>
-
+          <label className="block text-gray-700 text-sm font-bold mb-2 text-white" htmlFor="longDescription">
+            Long Description
+          </label>
+          <ReactQuill
+            id="longDescription"
+            value={longDescription}
+            onChange={setLongDescription}
+            required
+            className="w-full border rounded-lg text-white font-bold"
+          />
+        </div>
         <div className="mb-4">
-          <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+        <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
             Submit
           </button>
         </div>
@@ -174,3 +173,4 @@ const CreateDonation = () => {
 };
 
 export default CreateDonation;
+

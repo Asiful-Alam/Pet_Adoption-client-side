@@ -94,7 +94,7 @@ const AddPet = () => {
   return (
 
       <div className=" max-w-md mx-auto mt-8">
-      <div className="bg-white shadow-md rounded px-8 py-6">
+      <div className="bg-purple-gradient shadow-md rounded px-8 py-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">Add Pet</h2>
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <div>

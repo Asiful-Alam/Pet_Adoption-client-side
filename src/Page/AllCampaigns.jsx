@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import Navbar from "../Component/Navbar";
+
 const AllCampaigns = () => {
   const axiosSecure = useAxiosSecure();
   const [campaigns, setCampaigns] = useState([]);
@@ -47,42 +48,40 @@ const AllCampaigns = () => {
   }, [fetchCampaigns, loading]);
 
   return (
-   <div>
-   <div>
-    <Navbar></Navbar>
-   </div>
-    <div className="container mx-auto px-4 py-8 bg-white">
-      <h1 className="text-3xl font-bold mb-6 text-white text-center font-bold">All Campaigns ({campaigns.length})</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {campaigns.map((campaign) => (
-          <div key={campaign._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src={campaign.petPicture}
-              alt={campaign.petName}
-              className="w-full h-48 object-cover object-center"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2 text-gray-900">{campaign.petName}</h2>
-              <p className="text-gray-700 mb-2">
-                <strong>Max Donation:</strong> ${campaign.maxDonation}
-              </p>
-              <p className="text-gray-700 mb-4">
-                <strong>Donated Amount:</strong> ${campaign.donatedAmount || 0}
-              </p>
-              <Link
-                to={`/viewcampaigns/${campaign._id}`}
-                className="block w-full bg-blue-500 text-white py-2 px-4 rounded-lg text-center hover:bg-blue-600"
-              >
-                View Details
-              </Link>
+    <div>
+      <Navbar></Navbar>
+      <div className="container mx-auto px-4 py-8 bg-softWhite"> {/* Set background color to Soft White */}
+        <h1 className="text-3xl font-bold mb-6 text-deepPurple text-center">All Campaigns ({campaigns.length})</h1> {/* Set text color to Deep Purple */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {campaigns.map((campaign) => (
+            <div key={campaign._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img
+                src={campaign.petPicture}
+                alt={campaign.petName}
+                className="w-full h-48 object-cover object-center"
+              />
+              <div className="p-4">
+                <h2 className="text-xl font-semibold mb-2 text-gray-900">{campaign.petName}</h2> {/* Set text color to Dark Slate Gray */}
+                <p className="text-gray-700 mb-2">
+                  <strong>Max Donation:</strong> ${campaign.maxDonation}
+                </p>
+                <p className="text-gray-700 mb-4">
+                  <strong>Donated Amount:</strong> ${campaign.donatedAmount || 0}
+                </p>
+                <Link
+                  to={`/viewcampaigns/${campaign._id}`}
+                  className="block w-full bg-deepPurple text-white py-2 px-4 rounded-lg text-center hover:bg-magenta" 
+                >
+                  View Details
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        {loading && <p className="text-center mt-4">Loading...</p>}
+        {!hasMore && !loading && <p className="text-center mt-4 text-darkSlateGray">No more campaigns</p>} {/* Set text color to Dark Slate Gray */}
       </div>
-      {loading && <p className="text-center mt-4">Loading...</p>}
-      {!hasMore && !loading && <p className="text-center mt-4 text-gray-800">No more campaigns</p>}
     </div>
-   </div>
   );
 };
 

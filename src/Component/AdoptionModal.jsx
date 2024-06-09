@@ -22,64 +22,64 @@ const AdoptionModal = ({ pet, user, isOpen, onClose, onSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-4 rounded-lg shadow-lg w-full max-w-md">
+    <div className="fixed inset-0 flex justify-center items-center">
+      <div className="bg-gradient-to-br from-deepPurple to-purple-600 p-4 rounded-lg shadow-lg w-full max-w-md text-white">
         <h2 className="text-xl font-bold mb-4">Adopt {pet.name}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium">
               User Name
             </label>
             <input
               type="text"
               value={user.displayName || user.email}
               disabled
-              className="w-full border border-gray-300 rounded-md py-2 px-4"
+              className="w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-800"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium">
               Email
             </label>
             <input
               type="email"
               value={user.email}
               disabled
-              className="w-full border border-gray-300 rounded-md py-2 px-4"
+              className="w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-800"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium">
               Phone Number
             </label>
             <input
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full border border-gray-300 rounded-md py-2 px-4"
+              className="w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-800"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium">
               Address
             </label>
             <textarea
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="w-full border border-gray-300 rounded-md py-2 px-4"
+              className="w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-800"
             ></textarea>
           </div>
           <div className="flex justify-end">
             <button
               type="button"
               onClick={onClose}
-              className="py-2 px-4 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 mr-2"
+              className="py-2 px-4 text-sm font-medium bg-magenta rounded-lg hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 mr-2"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="py-2 px-4 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="py-2 px-4 text-sm font-medium bg-magenta rounded-lg hover:bg-purple-400 :outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50" 
             >
               Submit
             </button>

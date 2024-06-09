@@ -36,33 +36,38 @@ const MyDonations = () => {
   };
 
   return (
-    <div>
-      <h2>My Donations</h2>
+    <div className="max-w-screen-md mx-auto p-6">
+      <h2 className="text-3xl font-semibold mb-6">My Donations</h2>
       {donations.length === 0 ? (
         <div>No donations found</div>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Pet Name</th>
-              <th>Donated Amount</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations.map((donation) => (
-              <tr key={donation._id}>
-                <td>{donation.createdAt}</td>
-                <td>${donation.amount ? donation.amount.toFixed(2) : 'N/A'}</td>
-                <td>
-                  <button onClick={() => handleRefund(donation._id)}>
-                    Ask for Refund
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border-gray-200">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-4 py-2 text-left">Pet Name</th>
+                <th className="px-4 py-2 text-left">Donated Amount</th>
+                <th className="px-4 py-2 text-left">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {donations.map((donation) => (
+                <tr key={donation._id} className="border-b border-gray-200">
+                  <td className="px-4 py-2">{donation.createdAt}</td>
+                  <td className="px-4 py-2">${donation.amount ? donation.amount.toFixed(2) : "N/A"}</td>
+                  <td className="px-4 py-2">
+                    <button
+                      onClick={() => handleRefund(donation._id)}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    >
+                      Ask for Refund
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

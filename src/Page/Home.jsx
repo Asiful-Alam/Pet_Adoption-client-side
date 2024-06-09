@@ -10,7 +10,7 @@ import PetHospitalCard from "../Component/PetHospitalCard";
 const Home = () => {
 
   return (
-    <div >
+    <div className="bg-softWhite">
       <Helmet>
         <title>Home</title>
       </Helmet>

@@ -58,7 +58,7 @@ const AllUsers = (user) => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4"><span className="text-emerald-600">User Management:</span>{users.length}</h1>
+      <h1 className="text-2xl font-bold mb-4"><span className="text-purple-500">User Management:</span>{users.length}</h1> {/* Updated text color */}
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>

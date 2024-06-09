@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-
+  const location = useLocation();
+  
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -16,12 +17,14 @@ const Navbar = () => {
       .catch((error) => console.error(error));
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <nav className="bg-teal-500 border-b border-teal-600 dark:bg-gray-900 dark:border-gray-700">
+    <nav className="bg-deepPurple border-b border-teal-600 dark:bg-gray-900 dark:border-gray-700">
       <div className="max-w-screen-xl mx-auto p-4 flex justify-between items-center">
         <div className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="https://i.ibb.co/qBFJtNV/logo-for-pet-web.png"
             className="h-8 mr-2"
             alt="Flowbite Logo"
           />
@@ -54,7 +57,9 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-200 hover:text-white block px-2 py-1"
+                  className={`text-gray-200 hover:text-white block px-2 py-1 ${
+                    isActive("/") ? "bg-magenta" : ""
+                  }`}
                 >
                   Home
                 </Link>
@@ -63,7 +68,9 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/campaigns"
-                  className="text-gray-200 hover:text-white block px-2 py-1"
+                  className={`text-gray-200 hover:text-white block px-2 py-1 ${
+                    isActive("/campaigns") ? "bg-magenta" : ""
+                  }`}
                 >
                   Donation Campaigns
                 </Link>
@@ -71,7 +78,9 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/allpets"
-                  className="text-gray-200 hover:text-white block px-2 py-1"
+                  className={`text-gray-200 hover:text-white block px-2 py-1 ${
+                    isActive("/allpets") ? "bg-magenta" : ""
+                  }`}
                 >
                   Pet Listing
                 </Link>
@@ -101,13 +110,17 @@ const Navbar = () => {
                       <div className="py-1">
                         <Link
                           to="/dashboard"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                          className={`block px-4 py-2 text-gray-800 hover:bg-gray-200 ${
+                            isActive("/dashboard") ? "bg-magenta" : ""
+                          }`}
                         >
                           Dashboard
                         </Link>
                         <Link
                           to="/earnings"
-                          className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                          className={`block px-4 py-2 text-gray-800 hover:bg-gray-200 ${
+                            isActive("/earnings") ? "bg-magenta" : ""
+                          }`}
                         >
                           Earnings
                         </Link>
@@ -125,7 +138,9 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/login"
-                    className="text-gray-200 hover:text-white block px-2 py-1"
+                    className={`text-gray-200 hover:text-white block px-2 py-1 ${
+                      isActive("/login") ? "bg-magenta" : ""
+                    }`}
                   >
                     Login
                   </Link>

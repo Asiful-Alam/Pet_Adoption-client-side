@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CategoryCard = ({ item }) => { 
     const { pet_image, pet_name, pet_age, category } = item; 
     return (
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 dark:bg-gray-800 dark:border-gray-700">
+      <div className="max-w-sm bg-white border border-lightGray rounded-lg overflow-hidden shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 dark:bg-gray-800 dark:border-gray-700">
         <Link to={`/category?category=${category}`} className="block"> {/* Updated Link to pass category as query parameter */}
           <img className="w-full h-40 object-cover rounded-t-lg" src={pet_image} alt={pet_name} />
         </Link>

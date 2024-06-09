@@ -54,7 +54,7 @@ const DonationDetails = () => {
   
 
   return (
-    <div className="max-w-3xl bg-teal-300 mx-auto p-6 mt-10">
+    <div className="max-w-3xl bg-purple-600 mx-auto p-6 mt-10">
       {loading ? (
         <p className="text-center mt-4">Loading...</p>
       ) : campaign ? (

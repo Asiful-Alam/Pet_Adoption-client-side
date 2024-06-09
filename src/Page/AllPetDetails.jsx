@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import AdoptionModal from "../Component/AdoptionModal"; // Import the modal component
 import { useAuth } from "../provider/AuthProvider";
 
-
 const AllPetDetails = () => {
   const { id } = useParams();
   const [petDetails, setPetDetails] = useState(null);
@@ -78,8 +77,8 @@ const AllPetDetails = () => {
             </div>
             <button
               onClick={handleAdoptClick}
-              className="py-2 px-6 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
+              className="py-2 px-6 text-sm font-medium text-white bg-deepPurple rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+            > {/* Adjust button color to match your color scheme */}
               Adopt
             </button>
           </div>

@@ -25,7 +25,7 @@ const PetHospitalCard = ({ hospital }) => {
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hospital.address)}`;
 
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-white transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
+    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg m-4 bg-lightPurple transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
       <img className="w-full h-48 object-cover" src={hospital.image} alt={hospital.name} />
       <div className="px-6 py-4">
         <h1 className="font-bold text-2xl mb-2 text-gray-800">{hospital.name}</h1>
@@ -42,11 +42,17 @@ const PetHospitalCard = ({ hospital }) => {
 
 const App = () => {
   return (
-    <div className="flex flex-wrap justify-center bg-gray-100 min-h-screen p-4">
+  <div>
+    <div>
+      <h1>NearBy Hospital</h1>
+      <p>sdfffffffffsfd</p>
+    </div>
+      <div className="flex flex-wrap justify-center bg-white min-h-screen p-4">
       {petHospitals.map((hospital, index) => (
         <PetHospitalCard key={index} hospital={hospital} />
       ))}
     </div>
+  </div>
   );
 };
 

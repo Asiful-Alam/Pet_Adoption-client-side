@@ -1,7 +1,7 @@
 [
     {
         "_id": "60d5f9f4f4a2b814c89bb7b1",
-        "pet_image": "src/assets/dog for project.jpg",
+        "pet_image": "https://i.ibb.co/51JH64x/dog-for-project.jpg",
         "pet_name": "Buddy",
         "pet_age": 3,
         "pet_location": "New York, NY",
@@ -9,7 +9,7 @@
     },
     {
         "_id": "60d5f9f4f4a2b814c89bb7b2",
-        "pet_image": "https://example.com/images/cat.jpg",
+        "pet_image": "https://i.ibb.co/CWkN5My/category-pet.jpg",
         "pet_name": "Whiskers",
         "pet_age": 2,
         "pet_location": "Los Angeles, CA",
@@ -17,7 +17,7 @@
     },
     {
         "_id": "60d5f9f4f4a2b814c89bb7b3",
-        "pet_image": "https://example.com/images/rabbit1.jpg",
+        "pet_image": "https://i.ibb.co/3NPLTC6/rabbit-category.jpg",
         "pet_name": "Thumper",
         "pet_age": 1,
         "pet_location": "Chicago, IL",
@@ -25,7 +25,7 @@
     },
     {
         "_id": "60d5f9f4f4a2b814c89bb7b4",
-        "pet_image": "src/assets/dog for project.jpg",
+        "pet_image": "https://i.ibb.co/6bYzrrh/bird-category.jpg",
         "pet_name": "Polly",
         "pet_age": 4,
         "pet_location": "Houston, TX",

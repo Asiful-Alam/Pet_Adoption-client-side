@@ -31,26 +31,32 @@ const AdoptionRequest = () => {
       {loading ? (
         <p>Loading...</p>
       ) : adoptionRequests.length > 0 ? (
-        <ul>
-          {adoptionRequests.map((request) => (
-            <li key={request._id} className="mb-4">
-              <div className="bg-white p-4 rounded-lg shadow-md">
-                <h2 className="text-xl font-bold mb-2">{request.petName}</h2>
-                <img
-                  src={request.petImage}
-                  alt={request.petName}
-                  className="w-24 h-24 mb-2 rounded-full shadow-lg"
-                />
-                <p className="text-lg">
-                  <strong>Address:</strong> {request.address}
-                </p>
-                <p className="text-lg">
-                  <strong>Phone:</strong> {request.phone}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <table className="table-auto w-full">
+          <thead>
+            <tr>
+              <th className="px-4 py-2">Pet Name</th>
+              <th className="px-4 py-2">Pet Image</th>
+              <th className="px-4 py-2">Address</th>
+              <th className="px-4 py-2">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {adoptionRequests.map((request) => (
+              <tr key={request._id}>
+                <td className="border px-4 py-2">{request.petName}</td>
+                <td className="border px-4 py-2">
+                  <img
+                    src={request.petImage}
+                    alt={request.petName}
+                    className="w-12 h-12 rounded-full shadow-lg"
+                  />
+                </td>
+                <td className="border px-4 py-2">{request.address}</td>
+                <td className="border px-4 py-2">{request.phone}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>No adoption requests found.</p>
       )}
