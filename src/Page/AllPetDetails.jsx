@@ -13,7 +13,7 @@ const AllPetDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/pets/${id}`)
+    fetch(`https://full-project-server.vercel.app/pets/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPetDetails(data);
@@ -34,7 +34,7 @@ const AllPetDetails = () => {
   };
 
   const handleAdoptionSubmit = (adoptionData) => {
-    fetch("http://localhost:5000/adoption", {
+    fetch("https://full-project-server.vercel.app/adoption", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

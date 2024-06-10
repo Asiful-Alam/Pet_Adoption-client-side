@@ -51,7 +51,7 @@ const AddPet = () => {
       };
 
       try {
-        const response = await fetch("http://localhost:5000/pets", {
+        const response = await fetch("https://full-project-server.vercel.app/pets", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newPet),

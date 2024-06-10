@@ -12,7 +12,7 @@ const MyCampaignCard = ({ campaign }) => {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/donation/${_id}/donators`);
+        const response = await fetch(`https://full-project-server.vercel.app/donation/${_id}/donators`);
         if (response.ok) {
           const data = await response.json();
           setDonations(data.donators);
@@ -39,7 +39,7 @@ const MyCampaignCard = ({ campaign }) => {
 
   const handleUpdateSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/donation/${_id}`, {
+      const response = await fetch(`https://full-project-server.vercel.app/donation/${_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

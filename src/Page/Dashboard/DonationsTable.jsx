@@ -13,7 +13,7 @@
 
 //   const handlePause = async (id, pause) => {
 //     try {
-//       const response = await fetch(`http://localhost:5000/donation/pause/${id}`, {
+//       const response = await fetch(`https://full-project-server.vercel.app/donation/pause/${id}`, {
 //         method: "PATCH",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -36,7 +36,7 @@
 
 //   const handleViewDonators = async (id) => {
 //     try {
-//       const response = await fetch(`http://localhost:5000/donation/donators/${id}`);
+//       const response = await fetch(`https://full-project-server.vercel.app/donation/donators/${id}`);
 //       const data = await response.json();
 //       setSelectedDonation(id);
 //       setDonators(data);

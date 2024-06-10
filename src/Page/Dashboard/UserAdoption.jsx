@@ -7,7 +7,7 @@
 //     useEffect(() => {
 //         const fetchAdoptionRequests = async () => {
 //             try {
-//                 const response = await fetch(`http://localhost:5000/adoptionRequests?userId=${userId}`);
+//                 const response = await fetch(`https://full-project-server.vercel.app/adoptionRequests?userId=${userId}`);
 //                 if (!response.ok) {
 //                     throw new Error('Failed to fetch adoption requests');
 //                 }

@@ -14,7 +14,7 @@ const UpdateMyPet = () => {
   useEffect(() => {
     const fetchPet = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/pets/${id}`);
+        const response = await fetch(`https://full-project-server.vercel.app/pets/${id}`);
         if (response.ok) {
           const data = await response.json();
           setPet(data);
@@ -43,7 +43,7 @@ const UpdateMyPet = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/pets/${id}`, {
+      const response = await fetch(`https://full-project-server.vercel.app/pets/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

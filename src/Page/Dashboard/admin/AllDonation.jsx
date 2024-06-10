@@ -17,7 +17,7 @@ const AllDonation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/donation?page=${page}`, {
+        const response = await axios.get(`https://full-project-server.vercel.app/donation?page=${page}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -64,7 +64,7 @@ const AllDonation = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure
-          .delete(`http://localhost:5000/donation/${donation._id}`, {
+          .delete(`https://full-project-server.vercel.app/donation/${donation._id}`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -103,7 +103,7 @@ const AllDonation = () => {
   
 
   // const handlePauseDonation = (id) => {
-  //   axios.put(`http://localhost:5000/donation/${id}/pause`, {}, {
+  //   axios.put(`https://full-project-server.vercel.app/donation/${id}/pause`, {}, {
   //     headers: {
   //       Authorization: `Bearer ${token}` // Include the token in the headers
   //     }

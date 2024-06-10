@@ -53,12 +53,12 @@ export const router = createBrowserRouter([
       {
         path: "/allpets", // Fixed the missing slash
         element: <AllPet></AllPet>,
-        loader: () => fetch("http://localhost:5000/pets"),
+        loader: () => fetch("https://full-project-server.vercel.app/pets"),
       },
       {
         path: "/allpetdetails/:id", // Correct parameter name
         element: <AllPetDetails />,
-        loader: () => fetch("http://localhost:5000/pets"),
+        loader: () => fetch("https://full-project-server.vercel.app/pets"),
     },
       {
         path: "/secret", // Fixed the missing slash
@@ -133,7 +133,7 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/allpets", // Fixed the missing slash
         element: <AllPetAdmin></AllPetAdmin>,
-        loader: () => fetch("http://localhost:5000/pets"),
+        loader: () => fetch("https://full-project-server.vercel.app/pets"),
       },
       {
         path: "/dashboard/alldonation", // Fixed the missing slash

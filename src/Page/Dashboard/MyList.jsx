@@ -14,7 +14,7 @@ const MyList = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/mypets/${user?.email}`, { credentials: 'include' });
+        const response = await fetch(`https://full-project-server.vercel.app/mypets/${user?.email}`, { credentials: 'include' });
         if (response.ok) {
           const data = await response.json();
           setPets(data);
@@ -47,7 +47,7 @@ const MyList = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await axios.delete(`http://localhost:5000/pets/${id}`, {
+          const res = await axios.delete(`https://full-project-server.vercel.app/pets/${id}`, {
             headers: {
               Authorization: `Bearer ${user.token}`, // Assuming you have a token stored in user object
             },
@@ -85,7 +85,7 @@ const MyList = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      const response = await axios.put(`http://localhost:5000/pets/${id}`, { 
+      const response = await axios.put(`https://full-project-server.vercel.app/pets/${id}`, { 
         adopted: newStatus,
         // Include image and name fields in the request body
         image: pets.find(pet => pet._id === id).image,

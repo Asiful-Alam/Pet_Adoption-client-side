@@ -14,7 +14,7 @@ const UpdateAdminDonation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/donation/${id}`);
+        const response = await axios.get(`https://full-project-server.vercel.app/donation/${id}`);
         setFormData({
           maxDonation: response.data.maxDonation,
           lastDate: response.data.lastDate,
@@ -31,7 +31,7 @@ const UpdateAdminDonation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5000/donation/${id}`, formData);
+      const response = await axios.put(`https://full-project-server.vercel.app/donation/${id}`, formData);
       if (response.status === 200) {
         Swal.fire({
           title: "Success",

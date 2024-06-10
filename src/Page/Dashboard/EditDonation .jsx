@@ -11,7 +11,7 @@ const EditDonation = () => {
   useEffect(() => {
     const fetchDonation = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/donations/${id}`);
+        const response = await fetch(`https://full-project-server.vercel.app/donations/${id}`);
         const data = await response.json();
         setDonation(data);
       } catch (error) {
@@ -24,7 +24,7 @@ const EditDonation = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/donation/${id}`, {
+      const response = await fetch(`https://full-project-server.vercel.app/donation/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

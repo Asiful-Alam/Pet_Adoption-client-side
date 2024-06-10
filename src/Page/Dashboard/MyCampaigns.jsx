@@ -14,7 +14,7 @@ const MyCampaigns = () => {
       const fetchMyCampaigns = async () => {
         try {
           console.log("Fetching campaigns for user:", user.email);
-          const response = await fetch(`http://localhost:5000/mycampaigns/${user.email}`);
+          const response = await fetch(`https://full-project-server.vercel.app/mycampaigns/${user.email}`);
           if (response.ok) {
             const data = await response.json();
             console.log("Fetched campaigns:", data);
