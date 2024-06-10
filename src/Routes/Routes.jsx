@@ -24,6 +24,8 @@ import MyDonation from "../Page/Dashboard/MyDonation";
 import AllPetDetails from "../Page/AllPetDetails";
 import AdoptionRequest from "../Page/Dashboard/AdoptionRequest";
 import UserAdoption from "../Page/Dashboard/UserAdoption";
+import UpdateMyPet from "../Component/UpdateMyPet";
+import UpdateAdminDonation from "../Component/UpdateAdminDonation";
 
 
 export const router = createBrowserRouter([
@@ -101,6 +103,10 @@ export const router = createBrowserRouter([
         element: <MyList></MyList>,
       },
       {
+        path: "/dashboard/updatemypet/:id", // Fixed the missing slash
+        element: <UpdateMyPet></UpdateMyPet>
+      },
+      {
         path: "/dashboard/createCampaigns", // Fixed the missing slash
         element: <CreateDonation></CreateDonation>,
       },
@@ -133,6 +139,11 @@ export const router = createBrowserRouter([
         path: "/dashboard/alldonation", // Fixed the missing slash
         element: <AllDonation></AllDonation>,
       },
+      {
+        path: "/dashboard/updateadmindonation/:id",
+        element: <UpdateAdminDonation />,
+      }
+      
     ],
   },
 ]);

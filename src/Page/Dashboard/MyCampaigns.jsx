@@ -52,7 +52,9 @@ const MyCampaigns = () => {
         <Skeleton count={5} height={40} />
       ) : campaigns.length > 0 ? (
         campaigns.map(campaign => (
-          <MyCampaignCard key={campaign._id} campaign={campaign} />
+          <MyCampaignCard key={campaign._id} 
+          campaign={campaign}
+          />
         ))
       ) : (
         <p>No campaigns found.</p>

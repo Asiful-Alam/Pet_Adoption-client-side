@@ -105,7 +105,7 @@ const CreateDonation = () => {
             accept="image/*"
             onChange={handleImageUpload}
             required
-            className="w-full px-3 py-2 border rounded-lg text-white"
+            className="w-full px-3 py-2 border rounded-lg text-black"
           />
         </div>
         <div className="mb-4">
@@ -119,11 +119,11 @@ const CreateDonation = () => {
             value={maxDonation}
             onChange={(e) => setMaxDonation(e.target.value)}
             required
-            className="w-full px-3 py-2 border rounded-lg text-white"
+            className="w-full px-3 py-2 border rounded-lg text-black"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2 text-white" htmlFor="lastDate">
+          <label className="block text-sm font-bold mb-2 text-white" htmlFor="lastDate">
             Last Date of Donation
           </label>
           <input
@@ -133,7 +133,7 @@ const CreateDonation = () => {
             value={lastDate}
             onChange={(e) => setLastDate(e.target.value)}
             required
-            className="w-full px-3 py-2 border rounded-lg text-white"
+            className="w-full px-3 py-2 border rounded-lg text-black"
           />
         </div>
         <div className="mb-4">
@@ -147,7 +147,7 @@ const CreateDonation = () => {
             value={shortDescription}
             onChange={(e) => setShortDescription(e.target.value)}
             required
-            className="w-full px-3 py-2 border rounded-lg text-white"
+            className="w-full px-3 py-2 border rounded-lg text-black"
           />
         </div>
         <div className="mb-4">
@@ -159,7 +159,7 @@ const CreateDonation = () => {
             value={longDescription}
             onChange={setLongDescription}
             required
-            className="w-full border rounded-lg text-white font-bold"
+            className="w-full border rounded-lg text-black font-bold"
           />
         </div>
         <div className="mb-4">

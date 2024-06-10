@@ -9,17 +9,17 @@ const DonationDetails = () => {
   const [loading, setLoading] = useState(true);
   const [donationAmount, setDonationAmount] = useState("");
   const [isCampaignActive, setIsCampaignActive] = useState(true);
-
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const fetchCampaignDetails = async () => {
       try {
         const response = await axiosSecure.get(`/donation/${id}`);
         setCampaign(response.data);
-        // Check if the campaign's last date has passed
         const currentDate = new Date();
         const lastDate = new Date(response.data.lastDate);
-        if (currentDate > lastDate) {
+        setIsPaused(response.data.isPaused);
+        if (currentDate > lastDate || response.data.isPaused) {
           setIsCampaignActive(false);
         }
       } catch (error) {
@@ -34,24 +34,18 @@ const DonationDetails = () => {
 
   const handleAmountChange = (e) => {
     const value = e.target.value;
-    // Check if the campaign data is available
     if (campaign) {
-      // Check if the entered amount is less than or equal to the max donation amount
       if (value <= campaign.maxDonation) {
-        // Check if the entered amount is greater than or equal to 0
         if (value >= 0) {
           setDonationAmount(value);
         } else {
-          // If the entered amount is negative, set it to 0
           setDonationAmount(0);
         }
       } else {
-        // If the entered amount exceeds the max donation amount, set it to the max donation amount
         setDonationAmount(campaign.maxDonation);
       }
     }
   };
-  
 
   return (
     <div className="max-w-3xl bg-purple-600 mx-auto p-6 mt-10">
@@ -84,14 +78,17 @@ const DonationDetails = () => {
               onChange={handleAmountChange}
               className="border p-2 mb-4 w-full"
             />
-            {/* Display a message if the campaign is not active */}
-            {!isCampaignActive && (
+            {!isCampaignActive && !isPaused && (
               <p className="text-red-500 mb-4">
                 The donation date has expired.
               </p>
             )}
-            {/* Disable the button if the campaign is not active */}
-            {isCampaignActive ? (
+            {isPaused && (
+              <p className="text-red-500 mb-4">
+                This campaign has been paused by the admin.
+              </p>
+            )}
+            {isCampaignActive && !isPaused ? (
               <Link to={`/payment?amount=${donationAmount}&id=${campaign._id}`}>
                 <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
                   Donate Now

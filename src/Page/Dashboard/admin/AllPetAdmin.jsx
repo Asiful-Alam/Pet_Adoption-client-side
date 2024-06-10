@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 import AllPetTable from './AllPetTable';
 
 
-
 const AllPetAdmin = () => {
     const pets = useLoaderData();
     

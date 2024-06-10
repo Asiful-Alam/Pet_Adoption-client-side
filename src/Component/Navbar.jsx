@@ -5,6 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  // const history = useHistory(); // Initialize useHistory
   const location = useLocation();
   
   const toggleDropdown = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {})
+      // history.push("/dashboard/allusers")
       .catch((error) => console.error(error));
   };
 
@@ -115,14 +117,6 @@ const Navbar = () => {
                           }`}
                         >
                           Dashboard
-                        </Link>
-                        <Link
-                          to="/earnings"
-                          className={`block px-4 py-2 text-gray-800 hover:bg-gray-200 ${
-                            isActive("/earnings") ? "bg-magenta" : ""
-                          }`}
-                        >
-                          Earnings
                         </Link>
                         <button
                           onClick={handleLogOut}

@@ -111,8 +111,8 @@ const PetAdoptionCard = ({ center }) => {
 const App = () => {
   return (
     <div>
-      <h1>Pet Hospital</h1>
-      <p>Here you </p>
+      <h1 className="text-center text-2xl font-bold">Pet Adoption Center</h1>
+      <p className="text-center text-xl font-semibold">Here you can find all the pet Adoption center</p>
       <div className="flex flex-wrap justify-center bg-purple-gradient min-h-screen p-4">
         {petAdoptionCenters.map((center, index) => (
           <PetAdoptionCard key={index} center={center} />

@@ -69,15 +69,7 @@ const Dashboard = () => {
                     Adoption Request
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/dashboard/adoptionbyuser"
-                    className="block py-2 px-4 rounded hover:bg-purple-700"
-                    activeClassName="bg-purple-700"
-                  >
-                    Adoption Request By User
-                  </NavLink>
-                </li>
+                
                 <li>
                   <NavLink
                     to="/dashboard/createCampaigns"
@@ -121,6 +113,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="flex-1 bg-gray-200 p-8">
+        
         <Outlet />
       </div>
     </div>
