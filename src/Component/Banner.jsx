@@ -13,19 +13,19 @@ const Banner = () => {
       </div>
       <div>
         <img src="https://i.ibb.co/z52NjNn/pet-banner-2.jpg" alt="Banner 2" />
-        <p className="legend">Caption for Banner 2</p>
+        <p className="legend">Find your furry companion today! Our pet adoption website offers a loving home to pets of all shapes and sizes</p>
       </div>
       <div>
         <img src="https://i.ibb.co/LZ7pqxg/banner-3.jpg" alt="Banner 3" />
-        <p className="legend">Caption for Banner 3</p>
+        <p className="legend">Welcome to our pet adoption platform, where tails wag and hearts melt. Browse our adorable companions waiting to meet their forever families.</p>
       </div>
       <div>
         <img src="https://i.ibb.co/LZ7pqxg/banner-3.jpg" alt="Banner4" />
-        <p className="legend">Caption for Banner 4</p>
+        <p className="legend">Discover the joy of pet adoption with us. Every adoption creates a bond that lasts a lifetime.</p>
       </div>
       <div>
         <img src="https://i.ibb.co/z52NjNn/pet-banner-2.jpg" alt="Banner 5" />
-        <p className="legend">Caption for Banner 5</p>
+        <p className="legend">Unleash love and compassion by adopting a pet from our website. Your new best friend is just a click away.</p>
       </div>
     </Carousel>
   );
