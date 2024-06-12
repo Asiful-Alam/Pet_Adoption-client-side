@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import Swal from 'sweetalert2';
-import {  useAuth } from '../provider/AuthProvider';
+import { useAuth } from '../provider/AuthProvider';
 
 const UpdateMyPet = () => {
   const { id } = useParams();
-  const {user}= useAuth();
-//   const navigate = useNavigate();
+  const { user } = useAuth();
   const [pet, setPet] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -26,7 +24,6 @@ const UpdateMyPet = () => {
       } finally {
         setLoading(false);
       }
-      
     };
 
     fetchPet();
@@ -47,9 +44,9 @@ const UpdateMyPet = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
+          Authorization: `Bearer ${user.token}`,
         },
-        body: JSON.stringify(pet), // Send the updated pet data directly
+        body: JSON.stringify(pet),
       });
       if (!response.ok) {
         throw new Error('Failed to update pet');
@@ -74,43 +71,50 @@ const UpdateMyPet = () => {
   };
   
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center mt-8">Loading...</div>;
   }
 
   return (
-    <div>
-      <h1>Update Pet</h1>
+    <div className="max-w-md mx-auto mt-8">
+      <h1 className="text-2xl font-bold mb-4">Update Pet</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+        <div className="mb-4">
+          <label className="block text-sm font-medium">Name:</label>
           <input
             type="text"
             name="name"
             value={pet.name}
             onChange={handleChange}
             required
+            className="w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-800"
           />
-        </label>
-        <label>
-          Category:
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium">Category:</label>
           <input
             type="text"
             name="category"
             value={pet.category}
             onChange={handleChange}
             required
+            className="w-full border border-gray-300 rounded-md py-2 px-4 bg-white text-gray-800"
           />
-        </label>
-        <label>
-          Adopted:
-          <input
-            type="checkbox"
-            name="adopted"
-            checked={pet.adopted}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Update</button>
+        </div>
+        <div className="mb-4">
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              name="adopted"
+              checked={pet.adopted}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            Adopted
+          </label>
+        </div>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Update
+        </button>
       </form>
     </div>
   );

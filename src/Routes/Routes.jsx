@@ -26,6 +26,7 @@ import AdoptionRequest from "../Page/Dashboard/AdoptionRequest";
 import UserAdoption from "../Page/Dashboard/UserAdoption";
 import UpdateMyPet from "../Component/UpdateMyPet";
 import UpdateAdminDonation from "../Component/UpdateAdminDonation";
+import MyAdoptions from "../Page/Dashboard/MyAdoptions";
 
 
 export const router = createBrowserRouter([
@@ -142,6 +143,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/updateadmindonation/:id",
         element: <UpdateAdminDonation />,
+      },
+      {
+        path: "/dashboard/myadoption",
+        element: <MyAdoptions />
       }
       
     ],

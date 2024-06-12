@@ -69,6 +69,15 @@ const Dashboard = () => {
                     Adoption Request
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/dashboard/myadoption"
+                    className="block py-2 px-4 rounded hover:bg-purple-700"
+                    activeClassName="bg-purple-700"
+                  >
+                    My Adoption Request by user
+                  </NavLink>
+                </li>
                 
                 <li>
                   <NavLink

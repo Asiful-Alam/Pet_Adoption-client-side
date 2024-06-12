@@ -61,21 +61,26 @@ const AdoptionRequest = () => {
                   <td className="px-4 py-3">{request.address}</td>
                   <td className="px-4 py-3">{request.phone}</td>
                   <td className="px-4 py-3">
-                    {request.adopted ? (
+                    {request.status==="APPROVED" ? (
                       <button
                         disabled
                         className="bg-gray-400 text-white py-1 px-4 rounded cursor-not-allowed"
                       >
                         Adopted
                       </button>
-                    ) : (
+                    ) :request.status==="REJECTED"? (
                       <button
                         onClick={() => handleAdopted(request._id)}
-                        className="bg-green-500 hover:bg-green-600 text-white py-1 px-4 rounded"
+                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded"
                       >
                         Adopt
                       </button>
-                    )}
+                    ):<button
+                    onClick={() => handleAdopted(request._id)}
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-4 rounded"
+                  >
+                    Pending
+                  </button>}
                   </td>
                 </tr>
               ))}

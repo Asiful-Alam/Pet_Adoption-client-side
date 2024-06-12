@@ -7,7 +7,7 @@ const Footer = () => {
               <div className="mb-6 md:mb-0">
                  
                       <img src="https://i.ibb.co/qBFJtNV/logo-for-pet-web.png" className="h-16 W-26 me-3" alt="FlowBite Logo" />
-                      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pet Adoption</span>
              
               </div>
               <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
           <hr className="my-6 border-white sm:mx-auto dark:border-white lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-              <span className="text-sm text-white sm:text-center dark:text-white">© 2023 <a href="https://flowbite.com/" className="hover:underline">Flowbite™</a>. All Rights Reserved.
+              <span className="text-sm text-white sm:text-center dark:text-white">© 2023 <a href="https://flowbite.com/" className="hover:underline">Pet Adoption™</a>. All Rights Reserved.
               </span>
               <div className="flex mt-4 sm:justify-center sm:mt-0">
                   <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
